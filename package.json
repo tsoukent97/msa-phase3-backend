@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.ts",
+    "start": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,9 +20,16 @@
   },
   "homepage": "https://github.com/tsoukent97/msa-phase3-backend#readme",
   "dependencies": {
+    "@prisma/client": "^4.3.1",
+    "@types/node": "^18.7.18",
     "apollo-server-core": "^3.10.2",
     "apollo-server-express": "^3.10.2",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "heroku": "^7.63.4",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
   }
 }
