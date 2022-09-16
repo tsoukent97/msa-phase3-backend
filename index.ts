@@ -44,27 +44,30 @@ const resolvers = {
         nba_data: async () => await prisma.nba_data.findMany()
       },
   };
-async function startApolloServer(typeDefs:any, resolvers:any) {
-  const app = express();
-  const httpServer = http.createServer(app);
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    csrfPrevention: true,
-    cache: 'bounded',
-    plugins: [
-      ApolloServerPluginDrainHttpServer({ httpServer }),
-      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
-    ],
-    introspection: false,
-  });
-  await server.start();
-  server.applyMiddleware({
-    app,
-    path: '/'
-  });
-  await new Promise<void>(resolve => httpServer.listen({ port: 4000 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-}
+
+  async function startApolloServer(typeDefs: any, resolvers: any) {
+    const app = express();
+    const httpServer = http.createServer(app);
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers,
+      csrfPrevention: true,
+      cache: "bounded",
+      plugins: [
+        ApolloServerPluginDrainHttpServer({ httpServer }),
+        ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+      ],
+      introspection: false,
+    });
+    await server.start();
+    server.applyMiddleware({ app });
+    const PORT = process.env.PORT || 4000;
+    await new Promise<void>((resolve) =>
+      httpServer.listen({ port: PORT }, resolve)
+    );
+    console.log(
+      `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
+    );
+  }
 
 startApolloServer(typeDefs, resolvers);
