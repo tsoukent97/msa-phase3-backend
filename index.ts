@@ -60,7 +60,7 @@ const resolvers = {
       introspection: false,
     });
     await server.start();
-    server.applyMiddleware({ app });
+    server.applyMiddleware({ app, path: '/' });
     const PORT = process.env.PORT || 4000;
     await new Promise<void>((resolve) =>
       httpServer.listen({ port: PORT }, resolve)
