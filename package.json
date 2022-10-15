@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
-    "start": "ts-node index.ts"
+    "start": "prisma generate && ts-node index.ts"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "@types/node": "^18.7.18",
     "apollo-server-core": "^3.10.2",
     "apollo-server-express": "^3.10.2",
+    "curl": "^0.1.4",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "graphql": "^16.6.0",
