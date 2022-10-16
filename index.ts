@@ -22,6 +22,7 @@ const typeDefs = gql`
   type nba_data {
     player_name: String
     player_team: String
+    player_position: String
   }
 
   type Query {

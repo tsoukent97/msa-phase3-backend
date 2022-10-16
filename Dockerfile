@@ -1,3 +1,4 @@
+#using node image
 FROM node:16
 
 # Create app directory
@@ -13,8 +14,9 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
-# Bundle app source
+# Bundle app source, copy everything to docker directory
 COPY . .
 
+#running locally on port 8080
 EXPOSE 8080
 CMD [ "npm", "run", "start" ]
